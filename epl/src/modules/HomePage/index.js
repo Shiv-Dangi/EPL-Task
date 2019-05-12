@@ -8,6 +8,7 @@ import { getEplData } from '../../redux/HomePage/actions';
 
 //components
 import MatchesTable from './MatchesTable';
+import BubbleChart from './BubbleChart';
 
 //css
 import './index.scss';
@@ -22,7 +23,7 @@ class HomePage extends Component {
 			<div className='container'>
 				<div className='section'>
 					<div>section-1</div>
-					charts come here
+					<BubbleChart summary={this.props.summary} />
 				</div>
 				<div className='section'>
 					<div>section-2</div>
