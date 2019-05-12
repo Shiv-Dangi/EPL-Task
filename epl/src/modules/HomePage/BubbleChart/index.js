@@ -11,12 +11,13 @@ class BubbleChart extends PureComponent {
 		for (let key in summary) {
 			let teamData = summary[key];
 			chartData.push({
+				v: teamData.totalMatches || 0,
+				w: teamData.ties || 0,
 				x: teamData.lost || 0,
 				y: teamData.won || 0,
-				z: teamData.totalMatches || 0,
-				w: teamData.ties || 0,
-				code: teamData.team.code,
-				name: teamData.team.name
+				z: teamData.goalsScoredFor || 0,
+				code: teamData.team.code || '',
+				name: teamData.team.name || ''
 			});
 		}
 		return chartData;
@@ -40,34 +41,14 @@ class BubbleChart extends PureComponent {
 					gridLineWidth: 1,
 					title: {
 						text: 'Matches Lost in the season'
-					},
-					plotLines: [
-						{
-							color: 'black',
-							dashStyle: 'dot',
-							width: 2,
-							value: 65,
-							zIndex: 3
-						}
-					]
+					}
 				},
 
 				yAxis: {
-					startOnTick: false,
-					endOnTick: false,
 					title: {
 						text: 'Matches won in the season'
 					},
-					maxPadding: 0.2,
-					plotLines: [
-						{
-							color: 'black',
-							dashStyle: 'dot',
-							width: 2,
-							value: 60,
-							zIndex: 3
-						}
-					]
+					maxPadding: 0.2
 				},
 
 				tooltip: {
@@ -75,7 +56,7 @@ class BubbleChart extends PureComponent {
 					headerFormat: '<table>',
 					pointFormat:
 						'<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
-						'<tr><th>Match Played:</th><td>{point.z}</td></tr>' +
+						'<tr><th>Match Played:</th><td>{point.v}</td></tr>' +
 						'<tr><th>Match Won:</th><td>{point.y}</td></tr>' +
 						'<tr><th>Match Lost:</th><td>{point.x}</td></tr>' +
 						'<tr><th>Match tied:</th><td>{point.w}</td></tr>',
