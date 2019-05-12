@@ -4,7 +4,7 @@ class MatchesTable extends PureComponent {
 	renderTableRows = () => {
 		const { summary } = this.props;
 		let tableRows = [];
-		if (summary) {
+		if (summary && Object.keys(summary).length) {
 			for (let key in summary) {
 				let teamObj = summary[key];
 				tableRows.push(
