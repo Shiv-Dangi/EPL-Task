@@ -37,6 +37,10 @@ class BubbleChart extends PureComponent {
 					text: 'EPL Season 2011-12'
 				},
 
+				legend: {
+					enabled: false
+				},
+
 				xAxis: {
 					gridLineWidth: 1,
 					title: {
